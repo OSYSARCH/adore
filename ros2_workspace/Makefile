@@ -40,3 +40,14 @@ test:
 .PHONY: ccache_stats
 ccache_stats: ## Print out CCache Stats 
 	ccache -s -v
+
+.PHONY: launch
+launch: ## Launch a ROS2 scenario
+	@selected_file=$$(find ../adore_scenarios -type f -name "*.py" | fzf --prompt="Select a scenario to launch: ") && \
+	if [ -n "$$selected_file" ]; then \
+		echo "Launching $$selected_file..."; \
+		ros2 launch "$$selected_file"; \
+	else \
+		echo "No file selected."; \
+	fi
+
