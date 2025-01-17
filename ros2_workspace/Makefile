@@ -51,3 +51,11 @@ launch: ## Launch a ROS2 scenario
 		echo "No file selected."; \
 	fi
 
+.PHONY: force_kill_ros2
+force_kill_ros2: ## Forcefully kill all ROS 2 processes
+	@echo "Forcefully killing all lingering ROS 2 nodes..."
+	@pkill -9 -f ros2 || echo "No ROS 2 nodes found."
+	@pkill -9 -f rclpy || echo "No Python-based ROS 2 nodes found."
+	@pkill -9 -f launch || echo "No ROS 2 launch processes found."
+	@pkill -9 -f colcon || echo "No lingering colcon processes found."
+	@echo "All done!"
