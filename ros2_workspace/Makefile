@@ -10,11 +10,20 @@ help:
 
 .PHONY: build
 build: ## Build all ROS2 packages
-	source /opt/ros/$${ROS_DISTRO}/setup.bash && colcon build --parallel-workers $$(nproc)
+	source /opt/ros/$${ROS_DISTRO}/setup.bash && colcon build --parallel-workers $$(nproc) && source install/local_setup.sh
 
 .PHONY: build_release
 build_release: ## Build all ROS2 packages
-	source /opt/ros/$${ROS_DISTRO}/setup.bash && colcon build --parallel-workers $$(nproc) --cmake-args -DCMAKE_BUILD_TYPE=Release 
+	source /opt/ros/$${ROS_DISTRO}/setup.bash && colcon build --parallel-workers $$(nproc) --cmake-args -DCMAKE_BUILD_TYPE=Release && source install/local_setup.sh
+
+.PHONY: build_user_libraries
+build_user_libraries: 
+	cd ../libraries && make build && cd ../ros2_workspace
+
+.PHONY: build_libraries_and_nodes
+build_libraries_and_nodes: build_user_libraries build_release
+
+
 .PHONY: clean_build
 clean_build: clean build ## Clean and build all ROS2 packages
 
