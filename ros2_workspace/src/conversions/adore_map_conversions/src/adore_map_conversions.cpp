@@ -215,7 +215,7 @@ to_cpp_type( const adore_ros2_msgs::msg::Map& ros_map )
       // add lane
       cpp_map.lanes[lane->id] = lane;
       // add points
-      for( const auto& point : lane->borders.center.points )
+      for( const auto& point : lane->borders.center.interpolated_points )
       {
         cpp_map.quadtree.insert( point );
       }
