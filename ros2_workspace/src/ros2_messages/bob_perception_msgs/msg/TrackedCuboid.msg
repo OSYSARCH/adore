@@ -1,0 +1,2 @@
+uint64 object_id
+Cuboid cuboid

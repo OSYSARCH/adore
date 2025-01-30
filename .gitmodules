@@ -60,3 +60,9 @@
 [submodule "ros2_workspace/src/adore_decision_maker_infrastructure"]
 	path = ros2_workspace/src/decision_maker_infrastructure
 	url = git@github.com:DLR-TS/adore_decision_maker_infrastructure.git
+[submodule "ros2_workspace/src/adore_v2x_interface"]
+	path = ros2_workspace/src/adore_v2x_interface
+	url = git@gitlab.dlr.de:csa/ros2/adore_v2x_interface.git
+[submodule "ros2_workspace/src/v2x_msgs"]
+	path = ros2_workspace/src/v2x_msgs
+	url = git@gitlab.dlr.de:madurban/ros2-msgs.git

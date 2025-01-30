@@ -1,0 +1,4 @@
+std_msgs/Header header
+bob_perception_msgs/Classification classification
+bob_perception_msgs/CuboidVertex[] vertices
+bob_perception_msgs/CuboidVertex centroid
