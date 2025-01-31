@@ -329,7 +329,7 @@ to_ros_msg( const TrafficParticipantSet& participant_set )
 {
   adore_ros2_msgs::msg::TrafficParticipantSet msg;
 
-  for( const auto& [id, participant] : participant_set )
+  for( const auto& [id, participant] : participant_set.participants )
   {
     adore_ros2_msgs::msg::TrafficParticipantDetection detection_msg;
 
@@ -340,6 +340,10 @@ to_ros_msg( const TrafficParticipantSet& participant_set )
     detection_msg.detection_by_sensor = adore_ros2_msgs::msg::TrafficParticipantDetection::UNDEFINED;
 
     msg.data.push_back( detection_msg );
+  }
+  if( participant_set.validity_area )
+  {
+    msg.validity_area = math::conversions::to_ros_msg( participant_set.validity_area.value() );
   }
 
   return msg;
@@ -355,7 +359,11 @@ to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipantSet& msg )
     const auto&        participant_msg = detection.participant_data;
     TrafficParticipant participant     = to_cpp_type( participant_msg );
 
-    participant_set[participant.id] = participant;
+    participant_set.participants[participant.id] = participant;
+  }
+  if( msg.validity_area.points.size() > 5 )
+  {
+    participant_set.validity_area = math::conversions::to_cpp_type( msg.validity_area );
   }
 
   return participant_set;

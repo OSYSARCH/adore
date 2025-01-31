@@ -16,10 +16,13 @@
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>adore_map_conversions</depend>
+  <depend>adore_math_conversions</depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
+    <depend>rclcpp</depend>
+    <depend>adore_ros2_msgs</depend>
   </export>
 </package>

@@ -16,6 +16,7 @@
 
 #include "adore_map_conversions.hpp"
 #include "adore_math/angles.h"
+#include "adore_math_conversions.hpp"
 #include "adore_ros2_msgs/msg/gear_state.hpp"
 #include "adore_ros2_msgs/msg/traffic_participant_set.hpp"
 #include "adore_ros2_msgs/msg/trajectory.hpp"
