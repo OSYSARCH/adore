@@ -67,5 +67,5 @@
 	path = ros2_workspace/src/ros2_messages/v2x_msgs
 	url = git@gitlab.dlr.de:madurban/ros2-msgs.git
 [submodule "ros2_workspace/src/adore_simulated_remote_operator"]
-	path = ros2_workspace/src/adore_simulated_remote_operator
+	path = ros2_workspace/src/simulated_remote_operator
 	url = git@github.com:DLR-TS/adore_simulated_remote_operator.git
