@@ -17,7 +17,9 @@ clang-format
 clang-tidy
 cpplint
 cppcheck
-
+clang
+clangd
+python3-pylsp
 
 ## Plotting
 ros-${ROS_DISTRO}-plotjuggler-ros
