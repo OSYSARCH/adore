@@ -1,0 +1,415 @@
+asyncapi: 3.0.0
+info:
+  title: MAD Urban Edge/Backend API
+  version: 0.1.0
+  description: API for the edge/backend mqtt client
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+defaultContentType: application/json
+servers:
+  production:
+    host: localhost:{port}
+    protocol: mqtt
+    description: Test broker
+    variables:
+      port:
+        description: Secure connection (TLS) is available through port 8883.
+        default: '1883'
+        enum:
+          - '1883'
+          - '8883'
+channels:
+  controlTrajectoryAcknowledgement:
+    address: /MAV/{MAD_ID}/control/trajectory_acknowledgement/
+    description: '-'
+    messages:
+      controlTrajectoryAcknowledgement:
+        $ref: '#/components/messages/controlTrajectoryAcknowledgement'
+  controlTrajectorySuggestion:
+    address: /MAV/{MAD_ID}/control/trajectory_suggestion/
+    description: '-'
+    messages:
+      controlTrajectorySuggestion:
+        $ref: '#/components/messages/controlTrajectorySuggestion'
+  controlWaypointSuggestion:
+    address: /MAV/{MAD_ID}/control/waypoint_suggestion/
+    description: '-'
+    messages:
+      controlWaypointSuggestion:
+        $ref: '#/components/messages/controlWaypointSuggestion'
+  controlManeuverDrivingSignal:
+    address: /MAV/{MAV_ID}/control/maneuver_driving_signal
+    description: The target maneuver of the vehicle
+    messages:
+      controlManeuverDrivingSignal:
+        $ref: '#/components/messages/controlManeuverDrivingSignal'
+  controlDirectControlDrivingSignal:
+    address: /MAV/{MAV_ID}/control/direct_control_driving_signal
+    description: '-'
+    messages:
+      controlDirectControlDrivingSignal:
+        $ref: '#/components/messages/controlDirectControlDrivingSignal'
+  controlMode:
+    address: /MAV/{MAV_ID}/control/mode
+    description: '-'
+    messages:
+      controlMode:
+        $ref: '#/components/messages/controlMode'
+  controlLightingSystem:
+    address: /MAV/{MAV_ID}/control/lighting_system
+    messages:
+      controlLightingSystem:
+        $ref: '#/components/messages/controlLightingSystem'
+    description: The topic on which measured values may be produced and consumed.
+    parameters:
+      MAV_ID:
+        $ref: '#/components/parameters/MAV_ID'
+  stateLightingSystem:
+    address: /MAV/{MAV_ID}/state/lighting_system
+    messages:
+      stateLightingSystem:
+        $ref: '#/components/messages/stateLightingSystem'
+    description: The topic on which measured values may be produced and consumed.
+    parameters:
+      MAV_ID:
+        $ref: '#/components/parameters/MAV_ID'
+operations:
+  sendControlTrajectoryAcknowledgement:
+    action: send
+    channel:
+      $ref: '#/channels/controlTrajectoryAcknowledgement'
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos2'
+    messages:
+      - $ref: >-
+          #/channels/controlTrajectoryAcknowledgement/messages/controlTrajectoryAcknowledgement
+  sendControlWaypointSuggestion:
+    action: send
+    channel:
+      $ref: '#/channels/controlWaypointSuggestion'
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos2'
+    messages:
+      - $ref: >-
+          #/channels/controlWaypointSuggestion/messages/controlWaypointSuggestion
+  sendControlManeuverDrivingSignal:
+    action: send
+    channel:
+      $ref: '#/channels/controlManeuverDrivingSignal'
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos2'
+    messages:
+      - $ref: >-
+          #/channels/controlManeuverDrivingSignal/messages/controlManeuverDrivingSignal
+  sendControlDirectControlDrivingSignal:
+    action: send
+    channel:
+      $ref: '#/channels/controlDirectControlDrivingSignal'
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos0'
+    messages:
+      - $ref: >-
+          #/channels/controlDirectControlDrivingSignal/messages/controlDirectControlDrivingSignal
+  sendControlMode:
+    action: send
+    channel:
+      $ref: '#/channels/controlMode'
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos2'
+    messages:
+      - $ref: '#/channels/controlMode/messages/controlMode'
+  sendControlLightingSystem:
+    action: send
+    channel:
+      $ref: '#/channels/controlLightingSystem'
+    summary: >-
+      Inform about environmental lighting conditions of a particular
+      streetlight.
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos2'
+    messages:
+      - $ref: '#/channels/controlLightingSystem/messages/controlLightingSystem'
+  receiveControlTrajectorySuggestion:
+    action: receive
+    channel:
+      $ref: '#/channels/controlTrajectorySuggestion'
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos2'
+    messages:
+      - $ref: >-
+          #/channels/controlTrajectorySuggestion/messages/controlTrajectorySuggestion
+  receiveStateLightingSystem:
+    action: receive
+    channel:
+      $ref: '#/channels/stateLightingSystem'
+    summary: >-
+      Inform about environmental lighting conditions of a particular
+      streetlight.
+    traits:
+      - $ref: '#/components/operationTraits/mqtt_qos2'
+    messages:
+      - $ref: '#/channels/stateLightingSystem/messages/stateLightingSystem'
+components:
+  messages:
+    controlTrajectoryAcknowledgement:
+      name: controlTrajectoryAcknowledgement
+      title: controlTrajectoryAcknowledgement
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/controlTrajectoryAcknowledgement'
+    controlTrajectorySuggestion:
+      name: controlTrajectorySuggestion
+      title: controlTrajectorySuggestion
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/controlTrajectorySuggestion'
+    controlWaypointSuggestion:
+      name: controlWaypointSuggestion
+      title: controlWaypointSuggestion
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/controlWaypointSuggestion'
+    controlManeuverDrivingSignal:
+      name: controlManeuverDrivingSignal
+      title: controlManeuverDrivingSignal
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/controlManeuverDrivingSignal'
+    controlDirectControlDrivingSignal:
+      name: controlDirectControlDrivingSignal
+      title: Direct control driving signal
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/controlDirectControlDrivingSignal'
+    controlMode:
+      name: controlMode
+      title: Control Mode
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/controlMode'
+    controlLightingSystem:
+      name: controlLightingSystem
+      title: Control lighting system
+      summary: Send control commands to the lighting system
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/controlLightingSystemPayload'
+    stateLightingSystem:
+      name: stateLightingSystem
+      title: State lighting system
+      summary: Receive the current state of the lighting system of the MAV
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/stateLightingSystemPayload'
+  schemas:
+    controlTrajectoryAcknowledgement:
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/sentAt'
+        acknowledgement:
+          type: boolean
+          description: true / false
+    controlTrajectorySuggestion:
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/sentAt'
+        related_waypoint_timestamp:
+          $ref: '#/components/schemas/sentAt'
+        trajectory_point:
+          $ref: '#/components/schemas/waypoints'
+    controlWaypointSuggestion:
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/sentAt'
+        waypoints:
+          $ref: '#/components/schemas/waypoints'
+    controlManeuverDrivingSignal:
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/sentAt'
+        maneuver:
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+          x-enum-descriptions:
+            '0': maneuver_follow_lane
+            '1': maneuver_lane_change_left
+            '2': maneuver_lane_change_right
+            '3': maneuver_approach_junction
+            '4': maneuver_cross_junction_straight
+            '5': maneuver_turn_left_at_junction
+            '6': maneuver_turn_right_at_junction
+            '7': maneuver_turn_u_at_junction
+            '8': maneuver_approach_crosswalk
+            '9': maneuver_cross_crosswalk
+            '10': maneuver_park_left
+            '11': maneuver_park_right
+            '12': maneuver_stop
+    controlDirectControlDrivingSignal:
+      type: object
+      properties:
+        longitudinal:
+          type: integer
+          maximum: 160
+          minimum: -160
+          description: 0,1m/s²
+        lateral:
+          type: integer
+          maximum: 160
+          minimum: -160
+          description: '0,1 RAD (positive: left)'
+        driving_direction:
+          type: boolean
+          description: true=forward; false=backward
+        direct_reference_timestamp:
+          $ref: '#/components/schemas/sentAt'
+    controlMode:
+      type: object
+      properties:
+        driving_mode:
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+          x-enum-descriptions:
+            '0': Idle
+            '1': Standby
+            '2': Normalfahrt
+            '3': Rangierfahrt
+            '4': Notlauf
+            '5': Nothalt
+        control_mode:
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+          x-enum-descriptions:
+            '0': controlled by MAV
+            '1': controlled by Edge
+            '2': controlled by Edge, connected to driver
+            '3': controlled by driver
+            '4': no control
+        direct_control_mode:
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+          x-enum-descriptions:
+            '0': direct_control
+            '1': trajectory_control
+            '2': maneuver_control
+    controlLightingSystemPayload:
+      $ref: '#/components/schemas/stateLightingSystemPayload'
+    stateLightingSystemPayload:
+      type: object
+      properties:
+        lighting_mode:
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+          x-enum-descriptions:
+            '0': auto
+            '1': day
+            '2': bad weather
+            '3': night
+            '4': parking
+            '5': fog
+        high_beam:
+          type: boolean
+          description: true - On; false - Off
+        indicators:
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+          x-enum-descriptions:
+            '0': 'off'
+            '1': left indicator
+            '2': right indicator
+            '3': hazard lights
+        sentAt:
+          $ref: '#/components/schemas/sentAt'
+    sentAt:
+      type: integer
+      format: int64
+      description: Unix timestamp
+    waypoints:
+      type: array
+      items:
+        $ref: '#/components/schemas/MADPoint'
+      minItems: 1
+      maxItems: 30
+    Point:
+      type: array
+      description: '[lat, long, alt]'
+      items:
+        type: number
+        format: double
+        minItems: 3
+        maxItems: 3
+    MADPoint:
+      type: object
+      description: '[long, lat, alt]'
+      properties:
+        position:
+          $ref: '#/components/schemas/Point'
+        heading:
+          type: number
+        speed:
+          type: number
+        acceleration:
+          type: number
+        symmetric_area_offset:
+          type: number
+        asymmetric_area_offset:
+          type: number
+        delta_time:
+          $ref: '#/components/schemas/sentAt'
+  parameters:
+    MAV_ID:
+      description: The ID of the MAV.
+  operationTraits:
+    mqtt_qos0:
+      bindings:
+        mqtt:
+          qos: 0
+    mqtt_qos1:
+      bindings:
+        mqtt:
+          qos: 1
+    mqtt_qos2:
+      bindings:
+        mqtt:
+          qos: 2

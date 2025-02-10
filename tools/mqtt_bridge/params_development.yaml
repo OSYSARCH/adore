@@ -1,0 +1,39 @@
+/**/*:
+  ros__parameters:
+    broker:
+      host: localhost
+      port: 1883
+    bridge:
+      ros2mqtt:
+        ros_topics:
+          - /ping/primitive
+          - /ego_vehicle/MAV/control/trajectory_suggestion
+          - /ego_vehicle/MAV/state/subsystem_state
+          - /steve/v2x/ros2/rgs/denm
+        /steve/v2x/ros2/denm:
+          mqtt_topic: /denm
+          primitive: true
+        /ego_vehicle/MAV/control/trajectory_suggestion:
+          mqtt_topic: /MAV/control/trajectory_suggestion
+          primitive: true
+        /ego_vehicle/MAV/state/subsystem_state:
+          mqtt_topic: /MAV/state/subsystem_state
+          primitive: true
+        /ping/primitive:
+          mqtt_topic: pingpong/primitive
+          primitive: true
+      mqtt2ros:
+        mqtt_topics:
+          - pingpong/primitive
+          - /MAV/control/waypoint_suggestion
+          - /MAV/control/trajectory_suggestion
+          - /MAV/control/trajectory_acknowledgement
+        /MAV/control/waypoint_suggestion:
+          ros_topic: /ego_vehicle/MAV/control/waypoint_suggestion
+          primitive: true
+        /MAV/control/trajectory_suggestion:
+          ros_topic: /ego_vehicle/MAV/control/trajectory_suggestion
+          primitive: true
+        /MAV/control/trajectory_acknowledgement:
+          ros_topic: /ego_vehicle/MAV/control/trajectory_acknowledgement
+          primitive: true

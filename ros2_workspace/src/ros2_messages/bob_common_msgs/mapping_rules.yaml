@@ -1,0 +1,5 @@
+- enable_foreign_mappings: true
+  ros1_package_name: 'adore_if_ros_msg'
+  ros1_message_name: 'Action'
+  ros2_package_name: 'adore_if_ros_msg'
+  ros2_message_name: 'Action'

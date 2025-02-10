@@ -1,0 +1,27 @@
+/**/*:
+  ros__parameters:
+    broker:
+      host: localhost
+      port: 1883
+    bridge:
+      ros2mqtt:
+        ros_topics:
+          - /ping/primitive
+          - /waypoints
+          - /ego_vehicle/waypoints
+        /ping/primitive:
+          mqtt_topic: pingpong/primitive
+          primitive: true
+        /waypoints:
+          mqtt_topic: waypoints
+          primitive: true
+      mqtt2ros:
+        mqtt_topics:
+          - pingpong/primitive
+          - waypoints 
+        waypoints:
+          ros_topic: /ego_vehicle/waypoints
+          primitive: true
+        /ego_vehicle/waypoints:
+          ros_topic: /ego_vehicle/waypoints
+          primitive: true

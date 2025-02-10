@@ -61,7 +61,7 @@
 	path = ros2_workspace/src/decision_maker_infrastructure
 	url = git@github.com:DLR-TS/adore_decision_maker_infrastructure.git
 [submodule "ros2_workspace/src/adore_v2x_interface"]
-	path = ros2_workspace/src/adore_v2x_interface
+	path = ros2_workspace/src/interfaces/adore_v2x_interface
 	url = git@gitlab.dlr.de:csa/ros2/adore_v2x_interface.git
 [submodule "ros2_workspace/src/v2x_msgs"]
 	path = ros2_workspace/src/ros2_messages/v2x_msgs
@@ -69,3 +69,15 @@
 [submodule "ros2_workspace/src/adore_simulated_remote_operator"]
 	path = ros2_workspace/src/simulated_remote_operator
 	url = git@github.com:DLR-TS/adore_simulated_remote_operator.git
+[submodule "ros2_workspace/src/ros2_messages/vehicle_msgs"]
+	path = ros2_workspace/src/ros2_messages/vehicle_msgs
+	url = git@gitlab.dlr.de:csa/ros2/vehicle_msgs.git
+[submodule "ros2_workspace/src/interfaces/adore_bob_interface"]
+	path = ros2_workspace/src/interfaces/adore_bob_interface
+	url = git@gitlab.dlr.de:csa/ros2/adore_bob_interface.git
+[submodule "ros2_workspace/src/interfaces/adore_vehicle_interface"]
+	path = ros2_workspace/src/interfaces/adore_vehicle_interface
+	url = git@gitlab.dlr.de:csa/ros2/adore_vehicle_interface.git
+[submodule "adore_scenarios/adore_viewcar2_scenarios"]
+	path = adore_scenarios/viewcar2_scenarios
+	url = git@gitlab.dlr.de:csa/ros2/adore_viewcar2_scenarios.git
