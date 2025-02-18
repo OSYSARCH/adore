@@ -288,11 +288,18 @@ to_cpp_type( const adore_ros2_msgs::msg::TrafficParticipant& msg )
   // Convert state
   VehicleStateDynamic state = to_cpp_type( msg.motion_state );
 
+  math::Box3d bounding_box( 1,   // length
+                            1,   // width
+                            1 ); // height
+
+  if( msg.shape.dimensions.size() > 2 )
+  {
+    bounding_box = math::Box3d( msg.shape.dimensions[0], // length
+                                msg.shape.dimensions[1], // width
+                                msg.shape.dimensions[2]  // height
+    );
+  }
   // Convert bounding box
-  math::Box3d bounding_box( msg.shape.dimensions[0], // length
-                            msg.shape.dimensions[1], // width
-                            msg.shape.dimensions[2]  // height
-  );
 
   // Convert classification
   TrafficParticipantClassification classification = static_cast<TrafficParticipantClassification>( msg.classification.type_id );
