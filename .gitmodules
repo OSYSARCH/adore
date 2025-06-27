@@ -105,3 +105,6 @@
 [submodule "ros2_workspace/src/adore_simulated_remote_operator"]
 	path = ros2_workspace/src/simulated_remote_operator
 	url = git@github.com:DLR-TS/adore_simulated_remote_operator.git
+[submodule "tools/adore_model_checker"]
+	path = tools/adore_model_checker
+	url = git@github.com:DLR-TS/adore_model_checker.git
