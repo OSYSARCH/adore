@@ -1,0 +1,1067 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>ROS2 Observer - ADORe Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ros2-observer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ADORe Documentation" class="md-header__button md-logo" aria-label="ADORe Documentation" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ADORe Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ROS2 Observer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ADORe Documentation" class="md-nav__button md-logo" aria-label="ADORe Documentation" data-md-component="logo">
+      
+  <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    ADORe Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About ADORe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/system_requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prerequisites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/installing_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Technical Reference Manual
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Technical Reference Manual
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system_and_development/documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Submodules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems_and_solutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Licensing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../styleguide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Style Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building With Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-and-installing-nativity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building and Installing Nativity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-building-lttng-scope-and-trace-compass-docker-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Building Lttng Scope and Trace Compass Docker context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional: Building Lttng Scope and Trace Compass Docker context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros_home-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROS_HOME volume
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros2-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ros2-tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ros2-tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ros2-node-inspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      ros2-node-inspector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ros2-node-inspector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-datatypesjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output: datatypes.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-nodesjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output: nodes.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-node_summariesjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output: node_summaries.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-__node-namejson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output: __&lt;node name&gt;.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-graphjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output: graph.json
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ros2-observer">ROS2 Observer</h1>
+<p>Programmatic and human compatible observation of ROS.</p>
+<p>The ROS2 observer is a "toolbox" enabling/facilitating tracing and visualizaiton of ros2 
+programs/nodes.</p>
+<p>Current features of the project include:</p>
+<ul>
+<li>
+<p><strong>Node Inspection via the <code>ros2-node-inspector</code></strong>:<br />
+  This tool generates JSON files for every node, topic, and datatype. It also provides node graph visualization using GraphViz.</p>
+</li>
+<li>
+<p><strong>ROS 2 User-Level and Kernel-Level Tracing with the <code>ros2-tracer</code> Tool</strong>:  </p>
+</li>
+<li>The <code>ros2-tracer</code> manages tracing sessions for <a href="https://github.com/ros2/ros2_tracing">ros2_tracing</a>.  </li>
+<li>The <code>ros2-tracer</code> supports live tracing sessions using <code>lttng-live</code>.  </li>
+<li>
+<p>The <code>ros2-tracer</code> handles tracing output, converting it to CTF and JSON formats.</p>
+</li>
+<li>
+<p><strong>Docker Context/Images</strong>:<br />
+  Preconfigured Docker environments to run <code>Trace Compass</code> and <code>Lttng Scope</code>.</p>
+</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>This tool requires ROS2 and Python3 installed (tested with Python3.12 and ROS 2 Jazzy)
+- Python3 (tested with Python 3.12)
+- ROS2 (tested with Jazzy)
+- ROS2 https://github.com/ros2/ros2_tracing
+- The logged in user must be a member of the <code>tracing</code> group.
+    To add the current user to the <code>tracing</code> group use the following:
+    <code>groupadd -r tracing || true
+    usermod -aG tracing "${USER}"</code>
+- babeltrace2 
+- Tested in Ubuntu 24.04
+- The following system packages are required(see: <a href="https://github.com/DLR-TS/ros2_observer/blob/main/requirements.system">requirements.system</a>):</p>
+<pre><code>ros-${ROS_DISTRO}-ros2trace
+ros-${ROS_DISTRO}-ros2trace-analysis
+ros-${ROS_DISTRO}-tracetools
+ros-${ROS_DISTRO}-tracetools-acceleration
+ros-${ROS_DISTRO}-tracetools-acceleration-dbgsym
+ros-${ROS_DISTRO}-tracetools-analysis
+ros-${ROS_DISTRO}-tracetools-dbgsym
+ros-${ROS_DISTRO}-tracetools-image-pipeline
+ros-${ROS_DISTRO}-tracetools-image-pipeline-dbgsym
+ros-${ROS_DISTRO}-tracetools-launch
+ros-${ROS_DISTRO}-tracetools-read
+ros-${ROS_DISTRO}-tracetools-test
+ros-${ROS_DISTRO}-tracetools-trace 
+babeltrace2
+python3-bt2
+lttng-modules-dkms
+
+## For Node graphing
+graphviz
+python3-pydot
+python3-graphviz
+python3-numpy
+</code></pre>
+<ul>
+<li>Python3 PIP packages located in <a href="https://github.com/DLR-TS/ros2_observer/blob/main/requirements.pip3">requirements.pip3</a></li>
+</ul>
+<h3 id="building-with-docker">Building With Docker</h3>
+<ul>
+<li>Requires docker and GNU Make installed
+On the root of the project run the provided make target/recipe:</li>
+</ul>
+<pre><code>make build
+</code></pre>
+<p>Once built the package can be installed on any debian compatible system with:</p>
+<pre><code>cd build
+sudo dpkg -i *.deb
+</code></pre>
+<h3 id="building-and-installing-nativity">Building and Installing Nativity</h3>
+<p>With GNU Make installed run <code>sudo make install</code>
+The ROS2 observer python package will be installed. </p>
+<h3 id="optional-building-lttng-scope-and-trace-compass-docker-context">Optional: Building Lttng Scope and Trace Compass Docker context</h3>
+<p>This project provides docker images to run Lttng Scope and Trace Compass.
+They can be built with the following:</p>
+<pre><code>cd lttng_scope &amp;&amp; make build
+cd ..
+cd trace_compass &amp;&amp; make build
+</code></pre>
+<p>To run Trace Compass use the following make target:</p>
+<pre><code>cd trace_compass
+ROS_HOME=&quot;&lt;path to ROS home&gt;&quot; make start
+</code></pre>
+<p>To run Lttng Scope use the following make target:</p>
+<pre><code>cd lttng_scope
+ROS_HOME=&quot;&lt;path to ROS home&gt;&quot; make start
+</code></pre>
+<h4 id="ros_home-volume">ROS_HOME volume</h4>
+<p>Both Lttng Scope and Trace Compass expect the environmental variable <code>ROS_HOME</code>
+to be set. All tracing data should be in: ROS_HOME/tracing to be available to 
+open in Lttng Scope or Trace Compass.</p>
+<p>Unless otherwise specified the default path for both is: 
+<code>./trace_compass/.ros/tracing</code> and <code>./lttng_scope/.ros/tracing</code>.</p>
+<h3 id="usage">Usage</h3>
+<p>Once installed the ROS2 Observer Python3 package provides the <code>ros2-tracer</code> 
+command line tool and <code>ros2-node-inspector</code> command line tool.</p>
+<h4 id="ros2-tracer"><code>ros2-tracer</code></h4>
+<p>The ROS 2 tracer is a session management tool that invokes the <code>ros2 trace</code>
+command. It provides basic management of timed and live tracing sessions and
+auto-conversion of tracing output to json (via procedural parsing) and CTF
+using <code>babeltrace2</code>.</p>
+<h5 id="basic-usage">Basic Usage</h5>
+<ol>
+<li>Start you ROS2 nodes or programs that you want to trace</li>
+<li>Start a ros trace session using the <code>ros2-tracer</code> command line program:</li>
+</ol>
+<pre><code>ros2-tracer -t 5 -o
+</code></pre>
+<p>This will run a tracing session for 5 seconds and terminate. All output will be 
+placed in <code>ROS_HOME/tracing</code></p>
+<p>For more information on the <code>ros2-tracer</code> refer to the help with:</p>
+<pre><code>ros2-tracer --help
+</code></pre>
+<p>Once traces are generated they can be inspected using the provided distributions
+of <code>Trace Compass</code>, <code>Lttng Scope</code> or with <code>babeltrace2</code></p>
+<h4 id="ros2-node-inspector"><code>ros2-node-inspector</code></h4>
+<p>The ROS2 Node Inspector (ros2-node-inspector) is a procedural
+command line aggregator for the ROS 2 cli.</p>
+<p>The ROS 2 Node inspector invokes and parses the output from the following 
+ROS commands:
+- ros2 node list
+- ros2 topic info <topic name>
+- ros2 node info <node name>
+- ros2 interface show <message type></p>
+<p>All ros2 cli command output is parsed into JSON and placed in 
+ <code>ROS_HOME/ros2_node_inspector</code>.</p>
+<h5 id="basic-usage_1">Basic Usage</h5>
+<p>To inspect a single node invoke the <code>ros2-node-inspector</code> with the node name:</p>
+<pre><code>ros2-node-inspector &lt;node name&gt; 
+</code></pre>
+<p>To inspect all running nodes invoke <code>ros2-node-inspector</code> with to arguments:</p>
+<pre><code>ros2-node-inspector
+</code></pre>
+<p>For more information use: <code>ros2-node-inspector --help</code></p>
+<h6 id="output-datatypesjson">Output: <code>datatypes.json</code></h6>
+<p><code>datatypes.json</code> which will be located in: <code>ROS_HOME/ros2_node_inspector/datatypes.json</code>
+will contain a serialized JSON object with all defined datatypes, used by the 
+inspected nodes, provided by ROS: </p>
+<pre><code class="language-json">[
+    {
+        &quot;datatype&quot;: &quot;std_msgs/msg/String&quot;,
+        &quot;interface_text&quot;: &quot;string data&quot;,
+        &quot;interface&quot;: [
+            {
+                &quot;type&quot;: &quot;primitive&quot;,
+                &quot;datatype&quot;: &quot;string&quot;,
+                &quot;label&quot;: &quot;data&quot;,
+                &quot;array_constraint&quot;: &quot;&quot;,
+                &quot;constraint&quot;: &quot;&quot;,
+                &quot;value&quot;: &quot;&quot;,
+                &quot;typedef_text&quot;: &quot;string data&quot;
+            }
+        ]
+    },
+...
+]
+</code></pre>
+<h6 id="output-nodesjson">Output: <code>nodes.json</code></h6>
+<p><code>nodes.json</code>, which will be located in: <code>ROS_HOME/ros2_node_inspector/nodes.json</code>,
+contains a list of all running nodes including the topics, and 
+datatype associated with each topic. Each corresponding datatype will have an
+associated entry in <code>datatypes.json</code>. </p>
+<pre><code>{
+    &quot;node&quot;: &quot;/ros2_hello_world&quot;,
+    &quot;topics&quot;: [
+        {
+            &quot;topic&quot;: &quot;/parameter_events&quot;,
+            &quot;role&quot;: &quot;subscriber&quot;,
+            &quot;datatype&quot;: &quot;rcl_interfaces/msg/ParameterEvent&quot;
+        },
+        {
+            &quot;topic&quot;: &quot;/subscribing_topic_name&quot;,
+            &quot;role&quot;: &quot;subscriber&quot;,
+            &quot;datatype&quot;: &quot;std_msgs/msg/String&quot;
+        },
+        {
+            &quot;topic&quot;: &quot;/parameter_events&quot;,
+            &quot;role&quot;: &quot;publisher&quot;,
+            &quot;datatype&quot;: &quot;rcl_interfaces/msg/ParameterEvent&quot;
+        },
+        {
+            &quot;topic&quot;: &quot;/publishing_topic_name&quot;,
+            &quot;role&quot;: &quot;publisher&quot;,
+            &quot;datatype&quot;: &quot;std_msgs/msg/String&quot;
+        },
+        {
+            &quot;topic&quot;: &quot;/rosout&quot;,
+            &quot;role&quot;: &quot;publisher&quot;,
+            &quot;datatype&quot;: &quot;rcl_interfaces/msg/Log&quot;
+        }
+    ]
+}
+</code></pre>
+<h6 id="output-node_summariesjson">Output: <code>node_summaries.json</code></h6>
+<p><code>node_summaries.json</code>, which will be located in: 
+<code>ROS_HOME/ros2_node_inspector/node_summaries.json</code>, <code>nodes.json</code> and 
+<code>datatypes.json</code> combined into a single JSON object including the raw interface
+text that was used to generate each JSON object provided by 
+<code>ros interface show &lt;message type&gt;</code>.</p>
+<p>All datatypes for each topic are explicitly defined every time they occur. </p>
+<h6 id="output-__node-namejson">Output: <code>__&lt;node name&gt;.json</code></h6>
+<p>Every node will have a corresponding JSON file located in 
+<code>ROS_HOME/ros2_node_inspector/__&lt;node name&gt;.json</code>.
+To generate the node json files the character <code>/</code> is replaced with <code>__</code>.</p>
+<p>This contains the complete definition for that node including publishers, 
+subscribers, messages and datatypes. This same data can also be found in 
+<code>node_summaries.json</code></p>
+<h6 id="output-graphjson">Output: <code>graph.json</code></h6>
+<p><code>graph.json</code>, which will be located in: 
+<code>ROS_HOME/ros2_node_inspector/graph.json</code>, is a connected graph representation
+of the nodes and edges created by joining <code>publisher-&gt;subscriber</code> and 
+<code>subscriber-&gt;publisher</code> pairs.
+The <code>graph.json</code> is used to generate a graphviz dot file called <code>graph.dot</code> and
+<code>graph.dot.png</code> The dot file can be opened in any GraphViz DOT rendering tool 
+or the <code>graph.dot.png</code> can be opened with an image viewer.</p>
+<p>Graphing is still a work in progress.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
