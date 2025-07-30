@@ -10,7 +10,9 @@ void printLatLongToUTMCPP(const std::string& city, double lat, double lon) {
     std::chrono::duration<double, std::milli> duration_ms;
 
     start = std::chrono::high_resolution_clock::now();
-    std::vector<double> utmResult = adore::map::convert_lat_lon_to_utm(lat, lon);
+    std::optional<std::vector<double>> utmResultOptional = adore::map::convert_lat_lon_to_utm(lat, lon);
+    std::vector<double> utmResult = utmResultOptional.value(); 
+
     end = std::chrono::high_resolution_clock::now();
     duration_ms = end - start;
 

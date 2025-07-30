@@ -75,12 +75,14 @@ def create_simulated_vehicle_nodes(
     local_map_size: float = 50.0,
 ):
     if isinstance(start_position, Position):
-        x, y, psi = start_position.get_utm_coordinates()
+        # x, y, psi = start_position.get_utm_coordinates()
+        x, y, psi = start_position.get_lat_long_coordinates()
     else:
         x, y, psi = start_position
     
     if isinstance(goal_position, Position):
-        goal_x, goal_y, _ = goal_position.get_utm_coordinates()
+        # goal_x, goal_y, _ = goal_position.get_utm_coordinates()
+        goal_x, goal_y, _ = goal_position.get_lat_long_coordinates()
     else:
         goal_x, goal_y = goal_position
 
